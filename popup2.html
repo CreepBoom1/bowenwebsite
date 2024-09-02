@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Popup</title>
+    <link rel="stylesheet" href="popup2.css">
+</head>
+<body>
+    <div class="popup-container">
+        <h2>Обрати деталі для замовлення</h2>
+        <form id="order-form", action = "/submit", method ="POST">
+            <div class="form-group">
+                <label for="color">Колір:</label>
+                <select id="color" name="color">
+                    <option value="red">Червоний</option>
+                    <option value="blue">Синій</option>
+                    <option value="green">Зелений</option>
+                    <option value="black">Чорний</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="size">Розмір:</label>
+                <select id="size" name="size">
+                    <option value="small">Малий</option>
+                    <option value="medium">Середній</option>
+                    <option value="large">Великий</option>
+                </select>
+            </div>
+            <!-- <div class="form-group">
+                <label for="type">Тип:</label>
+                <select id="type" name="type">
+                    <option value="bed">Ліжко</option>
+                    <option value="table">Стіл</option>
+                    <option value="chair">Крісло</option>
+                    <option value="wardrobe">Шафа</option>
+                </select>
+            </div> -->
+            <button onclick="submitOrder()">Замовити</button>
+        </form>
+    </div>
+
+<script>
+        // Отримати тип меблів з параметрів URL
+        var urlParams = new URLSearchParams(window.location.search);
+        var type = urlParams.get('type');
+        document.getElementById('type').textContent = type;
+
+        // Функція для відправлення замовлення
+        function submitOrder() {
+            var color = document.getElementById('color').value;
+            var size = document.getElementById('size').value;
+
+            // Ви можете виконати тут логіку для відправлення даних або зберігання їх у базі даних
+
+            // Приклад виводу даних у консоль
+
+
+            console.log('Колір:', color);
+            console.log('Розмір:', size);
+
+            // Після відправлення замовлення можна закрити вікно popup.html
+            window.close();
+        }
+    </script>
+</body>
+</html>

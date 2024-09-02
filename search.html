@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Пошук</title>
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="icon" href="images/logo.ico" type="image/x-icon">
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+        .search-container {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+            padding-top: 50px;
+        }
+        .search-input {
+            width: 100%;
+            max-width: 400px;
+            padding: 10px;
+            font-size: 16px;
+            margin: 0 auto;
+            display: block;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+        .search-results {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        .search-results li {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+            cursor: pointer;
+            background-color: #fff;
+        }
+        .search-results li:hover {
+            background-color: #f9f9f9;
+        }
+        .search-results img {
+            max-width: 100px;
+            margin-right: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="search-container">
+        <h1>Пошук меблів</h1>
+        <input type="text" id="searchInput" class="search-input" placeholder="Введіть запит для пошуку...">
+        <ul id="searchResults" class="search-results">
+
+        </ul>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+
+            var furnitureObjects = [
+                { name: "Шафа купе", image: "./image/logo.png" },
+                { name: "Стіл для кухні", image: "./image/logo.png" },
+                { name: "Ліжко з дерева", image: "./image/logo.png" },
+                { name: "Диван Бона", image: "./image/logo.png" }
+
+            ];
+
+
+            function showSearchResults(query) {
+                var filteredObjects = furnitureObjects.filter(function(obj) {
+                    return obj.name.toLowerCase().includes(query.toLowerCase());
+                });
+
+                var resultsList = $('#searchResults');
+                resultsList.empty();
+
+
+                filteredObjects.forEach(function(obj) {
+                    var listItem = $('<li>').data('item', obj);
+                    var image = $('<img>').attr('src', obj.image).attr('alt', obj.name);
+                    var text = $('<p>').text(obj.name);
+                    listItem.append(image).append(text);
+                    resultsList.append(listItem);
+                });
+            }
+
+
+            $('#searchInput').keyup(function() {
+                var query = $(this).val();
+                if (query.length > 0) {
+                    showSearchResults(query);
+                } else {
+                    $('#searchResults').empty();
+                }
+            });
+
+
+            $('#searchResults').on('click', 'li', function() {
+                var item = $(this).data('item');
+                var type = encodeURIComponent(item.name.toLowerCase());
+
+                window.location.href = 'popup.html?type=' + type;
+            });
+        });
+    </script>
+</body>
+</html>
