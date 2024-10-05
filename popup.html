@@ -3,81 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="stylesheet" href="popup.css">
+    <link rel="stylesheet" href="./css/popup.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Замовлення меблів</title>
-    <style>
-
-        .popup-container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 1000;
-        }
-
-
-        .popup-content {
-            background: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            position: relative;
-            width: 80%;
-            display: flex;
-            align-items: flex-start;
-            flex-direction: row; /* Додає горизонтальне розташування елементів */
-        }
-
-
-        .popup-image {
-            margin-right: 20px;
-        }
-        .popup-image img {
-            max-width: 300px;
-            height: auto;
-            display: none;
-        }
-
-
-        .message-container {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            text-align: center;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            z-index: 1001;
-        }
-        .message-container p {
-            margin: 10px 0;
-        }
-        .message-container button {
-            margin-top: 20px;
-            padding: 10px 20px;
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        .message-container button:hover {
-            background-color: #0056b3;
-        }
-
-
-        .hide-content {
-            display: none;
-        }
-    </style>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
 </head>
 <body>
     <div class="popup-container">
@@ -118,76 +47,6 @@
             <button onclick="closePopup()">Закрити</button>
         </div>
     </div>
-
-    <script>
-        function getUrlParameter(name) {
-            const urlParams = new URLSearchParams(window.location.search);
-            return urlParams.get(name);
-        }
-
-        document.addEventListener('DOMContentLoaded', function() {
-            const type = getUrlParameter('type');
-            if (type) {
-                document.getElementById('type').textContent = decodeURIComponent(type);
-
-                updateImage(); // Оновлює зображення при завантаженні сторінки
-            } else {
-                document.getElementById('type').textContent = 'Не визначено';
-            }
-        });
-
-        function getImagePath(type, color) {
-            if (type === 'диван бона') {
-                switch (color) {
-                    case 'чорний':
-                        return '/image/c1.png';
-                    case 'білий':
-                        return '/image/c2.png';
-                    case 'синій':
-                        return '/image/c3.png';
-                    case 'червоний':
-                        return '/image/c4.png';
-                    case 'зелений':
-                        return '/image/c5.png';
-                    default:
-                        return '';
-                }
-            }
-            return '';
-        }
-
-        function updateImage() {
-            const type = document.getElementById('type').textContent.trim().toLowerCase();
-            const colorSelect = document.getElementById('color');
-            const furnitureImage = document.getElementById('furniture-image');
-            const selectedColor = colorSelect.value.toLowerCase();
-            const imagePath = getImagePath(type, selectedColor);
-
-            if (imagePath) {
-                furnitureImage.src = imagePath;
-                furnitureImage.style.display = 'block'; // Показати зображення
-            } else {
-                furnitureImage.src = '';
-                furnitureImage.style.display = 'none'; // Сховати зображення
-            }
-        }
-
-        function submitOrder() {
-            const popupContent = document.getElementById('popup-content');
-            const messageContainer = document.getElementById('message-container');
-
-
-            popupContent.classList.add('hide-content');
-
-
-            messageContainer.style.display = 'block';
-
-            console.log('Відправлено повідомлення.');
-        }
-
-        function closePopup() {
-            document.querySelector('.popup-container').style.display = 'none';
-        }
-    </script>
+    <script src="./js/index.js"></script>
 </body>
 </html>

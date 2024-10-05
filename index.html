@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Фабрика меблів Bowen</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./css/style.css">
     <link rel="shortcut icon" href="image/logo.ico" type="image/x-icon">
     <!-- bootstrap link -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -13,34 +13,7 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
-    <script>
-    // Обробник події для кнопок "Замовити" на index.html
-    $(document).ready(function() {
-        $('#btn3 button').click(function() {
-            // Отримати тип меблів з атрибуту data-type
-            var type = $(this).parent().attr('data-type');
 
-            // Відкрити нове вікно з popup.html і передати тип меблів через параметри URL
-            var url = 'popup.html?type=' + encodeURIComponent(type);
-            window.open(url, '_blank', 'width=600,height=400');
-
-        });
-    });
-</script>
-    <script>
-     // Обробник події для кнопок "Замовити" на index.html
-    $(document).ready(function() {
-        $('#btn2 button').click(function() {
-            // Отримати тип меблів з атрибуту data-type
-            var type = $(this).parent().attr('data-type');
-
-            // Відкрити нове вікно з popup.html і передати тип меблів через параметри URL
-            var url = 'popup2.html?type=' + encodeURIComponent(type);
-            window.open(url, '_blank', 'width=600,height=400');
-
-        });
-    });
-</script>
     <!-- bootstrap link -->
     
     <!-- icons -->
@@ -111,7 +84,7 @@
                 <h2><br>Сайт створений як каталог для меблів</h2>
             <p>Знайдіть будь-які меблі по бажанню або замовте особливі для себе</p>
             <li class="nav-item">
-    <a class="nav-link" href="search.html" div id="btn1" target="_blank">Шукати</a>
+            <a class="nav-link" href="search.html" div id="btn1" target="_blank">Шукати</a>
             </li>
           </div>
           
@@ -278,7 +251,8 @@
                     <div class="card-body">
                         <h3 class="card-titel text-center">Пуфи</h3>
                         <p class="card-text text-center">$0</p>
-                        <div id="btn3" class="btn3" data-type="Пуфи" data-image="/image/card8.png"><button onclick="submitOrder(this)">Замовити</button></div>
+                        <a style="border: 1px solid #000; text-decoration: none; color: #000;" href="./popup.html?type=Пуфи">Замовити</a>
+                        <!-- <div id="btn3" class="btn3" data-type="Пуфи" data-image="/image/card8.png"><button onclick="submitOrder(this)">Замовити</button></div> -->
                     </div>
                 </div>
             </div>
@@ -319,8 +293,36 @@
     </footer>
     <!-- footer -->
 
-
+<!-- popup -->
 
 
 </body>
+<script>
+    // Обробник події для кнопок "Замовити" на index.html
+    $(document).ready(function() {
+        $('#btn3 button').click(function() {
+            // Отримати тип меблів з атрибуту data-type
+            var type = $(this).parent().attr('data-type');
+
+            // Відкрити нове вікно з popup.html і передати тип меблів через параметри URL
+            var url = 'popup.html?type=' + encodeURIComponent(type);
+            window.open(url, '_blank', 'width=600,height=400');
+
+        });
+    });
+</script>
+    <script>
+     // Обробник події для кнопок "Замовити" на index.html
+    $(document).ready(function() {
+        $('#btn2 button').click(function() {
+            // Отримати тип меблів з атрибуту data-type
+            var type = $(this).parent().attr('data-type');
+
+            // Відкрити нове вікно з popup.html і передати тип меблів через параметри URL
+            var url = 'popup2.html?type=' + encodeURIComponent(type);
+            window.open(url, '_blank', 'width=600,height=400');
+
+        });
+    });
+</script>
 </html>
